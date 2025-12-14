@@ -1,0 +1,48 @@
+
+/* Navbar */
+.navbar {
+  background-color: #251F47;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.login-img {
+  width: 3.5em;
+  height: auto;
+}
+
+
+
+/* Cards de productos */
+.card {
+  border: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones */
+.btn-primary,
+.btn-success {
+  border-radius: 8px;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+  opacity: 0.9;
+}
+
+/* Footer */
+footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+  color: #555;
+}
+
+/* Modal */
+.modal-content {
+  border-radius: 10px;
+}
