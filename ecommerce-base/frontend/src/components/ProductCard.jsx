@@ -18,10 +18,10 @@ const ProductCard = ({ producto, agregarAlCarrito }) => {
             <p className="card-text">${parseFloat(price).toFixed(2)}</p>
           </div>
           <div className="mt-2 d-flex justify-content-between">
-            <Link to={`/product/${producto.id}`} className="btn btn-outline-primary btn-sm">
+            <Link to={`/product/${producto.id}`} className="btn btn-outline-dark btn-sm">
               Ver más
             </Link>
-            <button className="btn btn-success btn-sm" onClick={() => agregarAlCarrito(producto)}>
+            <button className="btn btn-secondary btn-sm" onClick={() => agregarAlCarrito(producto)}>
               Agregar al carrito
             </button>
           </div>

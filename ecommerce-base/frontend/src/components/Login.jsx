@@ -10,16 +10,20 @@ function Login({ onClose }) {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (usuario === 'admin' && password === '1234') {
-      login(usuario);
-      toast.success("Inicio de sesión exitoso");
-      onClose();
-      navigate('/');
-    } else {
-      toast.error("Credenciales incorrectas");
-    }
-  };
+  e.preventDefault();
+
+  if (usuario === "admin" && password === "1234") {
+    login(usuario, "admin");
+    toast.success("Ingresaste como administrador");
+  } else {
+    login(usuario, "user");
+    toast.success("Ingresaste como usuario");
+  }
+
+  onClose();
+  navigate("/");
+};
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -31,7 +35,7 @@ function Login({ onClose }) {
         <label>Contraseña</label>
         <input className="form-control" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
       </div>
-      <button className="btn btn-primary w-100" type="submit">Ingresar</button>
+      <button className="btn btn-secondary w-100" type="submit">Ingresar</button>
     </form>
   );
 }

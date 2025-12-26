@@ -14,7 +14,7 @@ const Cart = ({ carrito, eliminarDelCarrito }) => {
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4 text-center">🛒 Carrito de Compras</h2>
+      <h2 className="mb-4 text-center">Carrito de Compras</h2>
 
       {carrito.length === 0 ? (
         <div className="alert alert-info text-center">
@@ -59,10 +59,10 @@ const Cart = ({ carrito, eliminarDelCarrito }) => {
 
           <div className="mt-4 p-3 border rounded shadow-sm d-flex flex-column flex-md-row justify-content-between align-items-center">
             <h4 className="mb-3 mb-md-0">
-              Total: <span className="text-success">${total.toFixed(2)}</span>
+              Total: <span className="text-secondary">${total.toFixed(2)}</span>
             </h4>
             <button
-              className="btn btn-success btn-lg"
+              className="btn btn-warning btn-lg"
               onClick={handleComprar}
               aria-label="Confirmar compra"
             >

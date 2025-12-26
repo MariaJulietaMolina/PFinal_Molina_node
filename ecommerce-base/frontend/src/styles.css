@@ -1,7 +1,7 @@
 
 /* Navbar */
 .navbar {
-  background-color: #251F47;
+  background-color: #254665;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -25,7 +25,7 @@
 }
 
 /* Botones */
-.btn-primary,
+.btn-warning,
 .btn-success {
   border-radius: 8px;
 }

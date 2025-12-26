@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.jpg";
 import menu from "../assets/hamburguesa 1.png";
 import Login from "./Login";
 import { useContext } from "react";
@@ -29,10 +29,10 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark  px-3">
-
-          <button
-          className="navbar-toggler "
+      <nav className="navbar navbar-expand-lg navbar-dark px-3">
+        {/* Botón menú mobile */}
+        <button
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarContent"
@@ -40,43 +40,24 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span  ><img
-            src={menu}
-            alt="Logo"
-            height="40"
-            style={{ cursor: "pointer" }}
-          /></span>
+          <img src={menu} alt="Menú" height="40" />
         </button>
 
-        <button
-          className="navbar-brand me-3 btn btn-link p-0 border-0"
-          onClick={() => window.location.reload()}
-        >
-          <Link to="/">
-          <img
-            src={logo}
-            alt="Logo"
-            height="60"
-            style={{ cursor: "pointer" }}
-          />
-          </Link>
-        </button>
-
-      
+        {/* Logo */}
+        <Link className="navbar-brand me-3" to="/">
+          <img src={logo} alt="Logo" height="60" />
+        </Link>
 
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav w-100 align-items-lg-center flex-lg-row flex-column">
-            <li className="nav-item w-100 w-lg-50 mx-lg-auto my-2 my-lg-0">
-              <form
-                className="d-flex w-100"
-                role="search"
-                onSubmit={handleSubmit}
-              >
+
+            {/* Buscador */}
+            <li className="nav-item w-100 mx-lg-auto my-2 my-lg-0">
+              <form className="d-flex w-100" onSubmit={handleSubmit}>
                 <input
-                  className="form-control me-2 me-lg-5"
+                  className="form-control me-2"
                   type="search"
                   placeholder="Buscar"
-                  aria-label="Buscar"
                   value={busqueda}
                   onChange={(e) => setBusqueda(e.target.value)}
                 />
@@ -86,62 +67,44 @@ const Navbar = () => {
               </form>
             </li>
 
-            <li className="nav-item dropdown my-2 my-lg-0 ms-lg-3">
-              <button
-                className="btn btn-secondary dropdown-toggle w-100"
-                data-bs-toggle="dropdown"
-              >
-                Categorías
-              </button>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Novedades
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Auriculares
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Parlantes
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Higiene personal
-                  </a>
-                </li>
-              </ul>
-            </li>
-
+            {/* Usuario logueado */}
             {user ? (
               <>
+                {user.role === "admin" && (
+                  <li className="nav-item my-2 my-lg-0 ms-lg-3">
+                    <Link to="/admin" className="btn btn-outline-warning w-100">
+                      Admin
+                    </Link>
+                  </li>
+                )}
+
+                {user.role === "user" && (
+                  <li className="nav-item my-2 my-lg-0 ms-lg-3">
+                    <Link to="/perfil" className="btn btn-outline-success w-100">
+                      Usuario
+                    </Link>
+                  </li>
+                )}
+
                 <li className="nav-item my-2 my-lg-0 ms-lg-3">
-                  <Link to="/admin" className="btn btn-outline-info w-100">
-                    Admin
-                  </Link>
-                </li>
-                <li className="nav-item my-2 my-lg-0 ms-lg-3">
-                  <Link to="/cart" className="btn btn-outline-warning w-100">
+                  <Link to="/cart" className="btn btn-outline-info w-100">
                     Carrito
                   </Link>
                 </li>
+
                 <li className="nav-item my-2 my-lg-0 ms-lg-3">
                   <button
-                    className="btn btn-outline-danger w-100 d-flex justify-content-center align-items-center"
+                    className="btn btn-outline-warning w-100"
                     onClick={logout}
                   >
-                    <span style={{ whiteSpace: "pre" }}>Cerrar sesión</span>
+                    Cerrar sesión
                   </button>
                 </li>
               </>
             ) : (
               <li className="nav-item my-2 my-lg-0 ms-lg-3">
                 <button
-                  className="btn btn-outline-success w-100"
+                  className="btn btn-outline-warning w-100"
                   data-bs-toggle="modal"
                   data-bs-target="#loginModal"
                 >
@@ -153,12 +116,8 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <div
-        className="modal fade"
-        id="loginModal"
-        tabIndex="-1"
-        aria-hidden="true"
-      >
+      {/* Modal Login */}
+      <div className="modal fade" id="loginModal" tabIndex="-1" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -167,7 +126,6 @@ const Navbar = () => {
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
-                aria-label="Cerrar"
               ></button>
             </div>
             <div className="modal-body">

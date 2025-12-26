@@ -118,7 +118,7 @@ function FormularioProducto() {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn btn-secodary">
         {productoInicial ? "Actualizar" : "Agregar"} Producto
       </button>
     </form>
